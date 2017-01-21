@@ -10,26 +10,26 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 </head>
 
-<body>
+<body ng-controller="HomeController as home">
     <ol class="breadcrumb">
         <li><a href="#">OutFit</a></li>
         <li><a href="#">Upload</a></li>
         <li class="active">Data</li>
         <div class="jumbotron">
             <h1>Welcome to your virtual closet!</h1>
-            <p>What do you wanna wear today?</p>
+            <!--   <p>What do you wanna wear today?</p> -->
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Random</a></p>
         </div>
         <!-- div id="myCarousel" class="carousel slide" data-ride="carousel"> -->
-            <!-- Indicators -->
-            <!--  <ol class="carousel-indicators">
+        <!-- Indicators -->
+        <!--  <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
             <li data-target="#myCarousel" data-slide-to="3"></li>
         </ol> -->
-            <!-- Wrapper for slides -->
-            <!--  <div class="carousel-inner" role="listbox">
+        <!-- Wrapper for slides -->
+        <!--  <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img src="img_chania.jpg" alt="Chania">
             </div>
@@ -53,13 +53,23 @@
             <span class="sr-only">Next</span>
         </a>
     </div> -->
-           <!--  <div class="row text-center">
+        <!--  <div class="row text-center">
                 <div class="col-xs-12">
                     <a href="#" class="thumbnail">
                         <img src="..." alt="...">
                     </a>
                 </div> -->
-                {{}}
+        <div class="row">
+            <div class="col-sm-4" ng-repeat-start="image in home.pins.data">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading text-center"> {{image.note}} </div>
+                        <div class="panel-body text-center"><img src="{{image.image.original.url}}" style="max-height: 250px"></div>
+                        <div class="panel-footer"><a href="{{image.url}}">{{image.url}}</a></div>
+                    </div>
+                </div>
+            <div ng-repeat-end class="clearfix" ng-if="$index % 3 == 2"></div>
+        </div>
 </body>
 
 </html>
@@ -69,10 +79,10 @@
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <!-- Angular JavaScript -->
 <script src="bower_components/angular/angular.js"></script>
-
-<script src="app/core/pins.factory.js"></script>
-<script src="app/home/home.controller.js"</script>
+<!-- App Module Above The Rest -->
 <script src="app/app.module.js"></script>
-</body>
+<script src="app/core/pins.factory.js"></script>
+<script src="app/home/home.controller.js" </script>
+< /body>
 
-</html>
+< /html>
